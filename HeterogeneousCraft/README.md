@@ -1,4 +1,4 @@
-# Fabric Example Mod
+# Minecraft Fabric Mod - HeterogeneousCraft
 
 ## Setup
 
