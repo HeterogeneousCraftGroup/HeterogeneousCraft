@@ -46,6 +46,9 @@ public class ExampleMod implements ModInitializer {
 	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final Item MAGICALEND = new Item(new FabricItemSettings().group(TUT_GROUP));
 
+	public static final MagicalEndStone MagicalEnd = new MagicalEndStone(new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MagicalEndSword = new SwordItem(MagicalendTool.INSTANCE, 8, -2.4F, new FabricItemSettings().group(TUT_GROUP));
+
 	
 
 	public static final EntityType<FireBullet> FireBulletEntityType = Registry.register(
@@ -89,6 +92,9 @@ public class ExampleMod implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("tut", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(TUT_GROUP)));
 		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"), MAGICALEND);
+
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"),MagicalEnd);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"),MagicalEndSword);
 
 		// Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
 		EntityRendererRegistry.register(FireBulletEntityType, (context) ->
