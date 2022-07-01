@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+	  "all": "tut:block/deepslate_magicalend_ore"
+	}
+  }

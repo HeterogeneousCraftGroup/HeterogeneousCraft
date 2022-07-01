@@ -71,15 +71,10 @@ public class FireBullet extends ThrownItemEntity{
     protected void onCollision(HitResult hitResult) {
         HitResult.Type type = hitResult.getType();
         if (type == HitResult.Type.ENTITY) {
-            ((EntityHitResult)hitResult).getEntity().damage(DamageSource.magic(this, this.getOwner()), 5.0f);
+            ((EntityHitResult)hitResult).getEntity().damage(DamageSource.magic(this.getOwner(), this), 5.0f);
+            ((EntityHitResult)hitResult).getEntity().setOnFireFor(10); //set onFire(true);
         }
         
-        for(int i = 0 ; i<1000 ; i++){
-            double d = this.rand.nextGaussian() * 0.02D;
-            double e = this.rand.nextGaussian() * 0.02D;
-            double f = this.rand.nextGaussian() * 0.02D;
-            this.world.addParticle(ParticleTypes.FLAME, this.getX()+this.rand.nextFloat(),this.getY()+this.rand.nextFloat(),this.getZ()+this.rand.nextFloat(),d,e,f);
-        }
         // this.kill();
         // this.world.addParticle(ParticleTypes.FLAME, this.getX() + (double) (this.rand.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(), this.getY() + (double) (this.rand.nextFloat() * this.getHeight()), this.getZ() + (double) (this.rand.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(),0,0,0);
         // this.world.addParticle(ParticleTypes.FLAME, this.getX() + (double) (this.rand.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(), this.getY() + (double) (this.rand.nextFloat() * this.getHeight()), this.getZ() + (double) (this.rand.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(),0,0,0);

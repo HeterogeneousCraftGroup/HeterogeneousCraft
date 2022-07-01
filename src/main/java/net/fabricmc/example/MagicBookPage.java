@@ -6,7 +6,6 @@ public class MagicBookPage extends Item{
     public MagicBookPage(Settings settings) {
         
         super(settings);
-        //TODO Auto-generated constructor stub
     }
 
     @Override
