@@ -1,0 +1,9 @@
+item.tut.bookpage.name=魔法书页(空白)
+item.tut.fire.name=火魔法书页
+item.tut.ice.name=冰魔法书页
+item.tut.infusion_stick.name=附魔棒
+item.tut.infusion_block.name=书台
+item.tut.magicalend.name=魔法渊石
+item.tut.magicalend_sword.name=魔渊剑
+
+tile.tut.deepslate_magicalend_ore=魔法渊石原矿

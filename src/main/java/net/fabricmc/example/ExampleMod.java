@@ -20,10 +20,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -45,6 +42,9 @@ public class ExampleMod implements ModInitializer {
     public static final FireMagicBookPage Fire = new FireMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final IceMagicBookPage Ice = new IceMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(TUT_GROUP));
+
+	public static final MagicalEndStone MagicalEnd = new MagicalEndStone(new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MagicalEndSword = new SwordItem(MagicalendTool.INSTANCE, 8, -2.4F, new FabricItemSettings().group(TUT_GROUP));
 
 	
 
@@ -87,6 +87,9 @@ public class ExampleMod implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier("tut", "infusion_block"), INFUSION_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier("tut", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(TUT_GROUP)));
 		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
+
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"),MagicalEnd);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"),MagicalEndSword);
 
 		// Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
 		EntityRendererRegistry.register(FireBulletEntityType, (context) ->
