@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.block.OreBlock;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
@@ -20,11 +21,9 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 
 import org.checkerframework.common.returnsreceiver.qual.This;
@@ -45,6 +44,7 @@ public class ExampleMod implements ModInitializer {
     public static final FireMagicBookPage Fire = new FireMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final IceMagicBookPage Ice = new IceMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(TUT_GROUP));
+	public static final Item MAGICALEND = new Item(new FabricItemSettings().group(TUT_GROUP));
 
 	
 
@@ -64,7 +64,8 @@ public class ExampleMod implements ModInitializer {
 					.trackRangeBlocks(4).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
 					.build() // VERY IMPORTANT DONT DELETE FOR THE LOVE OF GOD PSLSSSSSS
 	);
-	public static final Block DEEPSLATE_MAGICALEND_ORE = new Block(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static final Block DEEPSLATE_MAGICALEND_ORE = new OreBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f), UniformIntProvider.create(1,20));
+
 
 	public static final Block INFUSION_BLOCK = new InfusionBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	public static BlockEntityType<Infusion> INFUSION;
@@ -87,6 +88,7 @@ public class ExampleMod implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier("tut", "infusion_block"), INFUSION_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier("tut", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(TUT_GROUP)));
 		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"), MAGICALEND);
 
 		// Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
 		EntityRendererRegistry.register(FireBulletEntityType, (context) ->
