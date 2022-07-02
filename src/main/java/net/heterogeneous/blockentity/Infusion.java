@@ -1,23 +1,20 @@
-package net.fabricmc.example;
+package net.heterogeneous.blockentity;
 
-import net.minecraft.block.BlockEntityProvider;
+import net.heterogeneous.Main;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Position;
 
 public class Infusion extends BlockEntity  {
     private boolean active = false;
 
     public Infusion(BlockPos pos, BlockState state) {
-        super(ExampleMod.INFUSION, pos, state);
+        super(Main.INFUSION, pos, state);
     }
 
     public void setActive(boolean b) {
@@ -39,11 +36,9 @@ public class Infusion extends BlockEntity  {
     }
 
     public void infuse() {
-        BlockPos pos = this.getPos();
-        pos.add(0,-1,0);
-        assert world != null;
-        if(world.getBlockState(pos) == Blocks.FIRE.getDefaultState()){
-            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY(),pos.getZ(), new ItemStack(ExampleMod.Fire)));
+        BlockPos pos = this.getPos().down(1);
+        if(world.getBlockState(pos).getBlock().getClass() == Blocks.FIRE.getDefaultState().getBlock().getClass()){
+            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Main.Fire)));
             }
     }
 

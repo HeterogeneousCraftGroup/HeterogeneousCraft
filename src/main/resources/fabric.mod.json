@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "tut",
-  "version": "1.0",
+  "id": "heterogeneous-craft",
+  "version": "V0.1-SNAPSHOT",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Heterogeneous Craft",
+  "description": "The mod goal is to improve short-distance weapon and magical weapon, make them useful and fun.",
   "authors": [
-    "Me!"
+    "G-Breeze",
+    "fafa_junhe"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/HeterogeneousCraftGroup/HeterogeneousCraft",
+    "sources": "https://github.com/HeterogeneousCraftGroup/HeterogeneousCraft"
   },
 
   "license": "CC0-1.0",
@@ -19,16 +20,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.heterogeneous.Main"
     ],
     "client": [
-      "net.fabricmc.example.ExampleClientMod"
+      "net.heterogeneous.ClientMod"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
-
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",

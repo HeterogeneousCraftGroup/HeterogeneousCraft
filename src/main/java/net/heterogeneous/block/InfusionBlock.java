@@ -1,23 +1,21 @@
-package net.fabricmc.example;
+package net.heterogeneous.block;
 
 
-import net.minecraft.block.BlockWithEntity;
-import org.lwjgl.system.CallbackI.P;
+import net.heterogeneous.blockentity.Infusion;
+import net.heterogeneous.item.InfusionStick;
+import net.heterogeneous.item.MagicBookPage;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.AbstractBlock.Settings;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager.Builder;

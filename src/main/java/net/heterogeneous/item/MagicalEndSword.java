@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package net.heterogeneous.item;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

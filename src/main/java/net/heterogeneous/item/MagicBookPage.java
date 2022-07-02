@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package net.heterogeneous.item;
 import net.minecraft.item.Item;
 import net.minecraft.util.TypedActionResult;
 public class MagicBookPage extends Item{

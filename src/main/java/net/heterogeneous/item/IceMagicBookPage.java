@@ -1,16 +1,11 @@
-package net.fabricmc.example;
+package net.heterogeneous.item;
 
+import net.heterogeneous.entity.IceBullet;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.ArrowItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particle.*;
-import net.minecraft.particle.ParticleEffect;
 
-public class FireMagicBookPage extends MagicBookPage {
+public class IceMagicBookPage extends MagicBookPage {
 
-    public FireMagicBookPage(Settings settings) {
+    public IceMagicBookPage(Settings settings) {
         super(settings);
         //TODO Auto-generated constructor stub
     }
@@ -23,9 +18,9 @@ public class FireMagicBookPage extends MagicBookPage {
         double z = user.getRotationVector().getZ()*2;
         
         
-        FireBullet fb =  new FireBullet(world, user.getX(), user.getY()+1, user.getZ());
-        fb.addVelocity(x, y, z);
-        world.spawnEntity(fb);
+        IceBullet ib =  new IceBullet(world, user.getX(), user.getY()+1, user.getZ());
+        ib.addVelocity(x, y, z);
+        world.spawnEntity(ib);
         
         
         // user.getStackInHand(hand).setCount(user.getStackInHand(hand).getCount()-1);

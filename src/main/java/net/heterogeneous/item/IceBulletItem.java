@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package net.heterogeneous.item;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
@@ -10,9 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class FireBulletItem extends Item {
+public class IceBulletItem extends Item {
 
-    public FireBulletItem(Settings settings) {
+    public IceBulletItem(Settings settings) {
         super(settings);
         //TODO Auto-generated constructor stub
     }
