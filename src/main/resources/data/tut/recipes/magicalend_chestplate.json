@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R R",
+    "WWW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "item": "tut:magicalend"
+    },
+    "R": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "tut:magicalend_chestplate",
+    "count": 1
+  }
+}

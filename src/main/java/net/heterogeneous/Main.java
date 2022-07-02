@@ -35,7 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main implements ModInitializer {
-	public final static String ModID = "examplemod";
+	public final static String ModID = "heterogeneouscraft";
 	public static ScreenHandlerType<ExampleGuiDescription> SCREEN_HANDLER_TYPE ;
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
@@ -51,7 +51,11 @@ public class Main implements ModInitializer {
 	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(TUT_GROUP));
 	public static final Item MAGICALEND = new Item(new FabricItemSettings().group(TUT_GROUP));
 
-	public static ToolItem MAGICAL_END_SWORD = new SwordItem(MagicalendTool.INSTANCE, 8, -2.4F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_SWORD = new SwordItem(MagicalendTool.INSTANCE, 9, -2.4F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_SICKLE = new SwordItem(MagicalendTool.INSTANCE, 7, -1.8F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_SHOVEL = new ShovelItem(MagicalendTool.INSTANCE, 3, -1.5F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_AXE = new CustomAxeItem(MagicalendTool.INSTANCE, 13, -3.0F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_PICKAXE = new CustomPickaxeItem(MagicalendTool.INSTANCE, 4, -2.8F, new FabricItemSettings().group(TUT_GROUP));
 
 	
 
@@ -107,6 +111,12 @@ public class Main implements ModInitializer {
 		SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(new Identifier("tut", "anvil_block"), (syncId, inventory) -> new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
 
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"), MAGICAL_END_SWORD);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sickle"), MAGICAL_END_SICKLE);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_shovel"), MAGICAL_END_SHOVEL);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_axe"), MAGICAL_END_AXE);
+		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_pickaxe"), MAGICAL_END_PICKAXE);
+
+		RegisterArmorItems.register();
 
 		// Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
 		EntityRendererRegistry.register(FireBulletEntityType, (context) ->
