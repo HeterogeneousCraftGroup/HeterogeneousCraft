@@ -1,14 +1,6 @@
 package net.heterogeneous;
 
 import net.fabricmc.api.ModInitializer;
-import net.heterogeneous.block.AnvilTable;
-import net.heterogeneous.block.InfusionBlock;
-import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.heterogeneous.blockentity.Infusion;
-import net.heterogeneous.entity.FireBullet;
-import net.heterogeneous.entity.IceBullet;
-import net.heterogeneous.gui.ExampleGuiDescription;
-import net.heterogeneous.item.*;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -16,6 +8,14 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.heterogeneous.block.AnvilTable;
+import net.heterogeneous.block.InfusionBlock;
+import net.heterogeneous.block.MagicTable;
+import net.heterogeneous.blockentity.AnvilTableBlockEntity;
+import net.heterogeneous.blockentity.Infusion;
+import net.heterogeneous.entity.FireBullet;
+import net.heterogeneous.entity.IceBullet;
+import net.heterogeneous.gui.ExampleGuiDescription;
 import net.heterogeneous.item.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -31,7 +31,6 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,9 +72,10 @@ public class Main implements ModInitializer {
 					.build() // VERY IMPORTANT DONT DELETE FOR THE LOVE OF GOD PSLSSSSSS
 	);
 	public static final Block DEEPSLATE_MAGICALEND_ORE = new OreBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f), UniformIntProvider.create(1,20));
-	public static final Block ANVIL_TABLE = new AnvilTable(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static final Block ANVILTABLE = new AnvilTable(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	public static BlockEntityType<AnvilTableBlockEntity> ANVIL_TABLE_BLOCK_ENTITY;
-
+	public static final Block MAGICTABLE = new MagicTable(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+	public static BlockEntityType<net.heterogeneous.blockentity.MagicTableBlockEntity> MagicTableBlockEntity;
 	public static final Block INFUSION_BLOCK = new InfusionBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	public static BlockEntityType<Infusion> INFUSION;
 
@@ -98,7 +98,12 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("tut", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(TUT_GROUP)));
 		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"), MAGICALEND);
-		Registry.register(Registry.BLOCK, new Identifier("tut", "anvil_block"), ANVIL_TABLE);
+		Registry.register(Registry.BLOCK, new Identifier("tut", "anvil_table"), ANVILTABLE);
+		Registry.register(Registry.ITEM, new Identifier("tut", "anvil_table"), new BlockItem(ANVILTABLE,new FabricItemSettings().group(TUT_GROUP)));
+
+		Registry.register(Registry.ITEM, new Identifier("tut", "magic_table"), new BlockItem(MAGICTABLE,new FabricItemSettings().group(TUT_GROUP)));
+		Registry.register(Registry.BLOCK, new Identifier("tut", "magic_table"), MAGICTABLE);
+
 		SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(new Identifier("tut", "anvil_block"), (syncId, inventory) -> new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
 
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"), MAGICAL_END_SWORD);
@@ -110,7 +115,7 @@ public class Main implements ModInitializer {
 				 new FlyingItemEntityRenderer(context));
 		INFUSION = Registry.register(Registry.BLOCK_ENTITY_TYPE, "infusion", FabricBlockEntityTypeBuilder.create(Infusion::new, INFUSION_BLOCK).build(null));
 		// Registry.register(Registry.ENTITY_TYPE, new Identifier("tut","firebullet"), FIRE_BULLET)
-		ANVIL_TABLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "anvil_table", FabricBlockEntityTypeBuilder.create(AnvilTableBlockEntity::new, ANVIL_TABLE).build(null));
+		ANVIL_TABLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "anvil_table", FabricBlockEntityTypeBuilder.create(AnvilTableBlockEntity::new, ANVILTABLE).build(null));
 	}
 
 }
