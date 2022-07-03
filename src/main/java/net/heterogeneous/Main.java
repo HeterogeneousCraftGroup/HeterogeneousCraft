@@ -82,6 +82,7 @@ public class Main implements ModInitializer {
 	public static BlockEntityType<net.heterogeneous.blockentity.MagicTableBlockEntity> MagicTableBlockEntity;
 	public static final Block INFUSION_BLOCK = new InfusionBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
 	public static BlockEntityType<Infusion> INFUSION;
+	SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(ExampleBlock.ID, (syncId, inventory) -> new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
 
 		// public static final FireBullet FIRE_BULLET = new FireBullet(ENTITY_TYPE.firebullet, );
 	@Override
