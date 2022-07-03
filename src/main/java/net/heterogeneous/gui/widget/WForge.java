@@ -12,9 +12,15 @@ public class WForge extends WWidget {
     public WForge(){
 
     }
+    @Override
+    public boolean canResize() {
+        return true; // set to false if you want a static size
+    }
+
     @Environment(EnvType.CLIENT)
     @Override
     public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY) {
+
     }
     public Template getTemplate() {
         return template;

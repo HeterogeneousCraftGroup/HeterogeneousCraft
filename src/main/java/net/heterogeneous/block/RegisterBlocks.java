@@ -16,7 +16,7 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 
 public class RegisterBlocks {
-    public static final Block DEEPSLATE_MAGICALEND_ORE =  new OreBlock(FabricBlockSettings.of(Material.METAL).strength(2.0F).sounds(BlockSoundGroup.DEEPSLATE), UniformIntProvider.create(3, 4));
+    public static final Block DEEPSLATE_MAGICALEND_ORE =  new OreBlock(FabricBlockSettings.of(Material.METAL).strength(2.0F).requiresTool().sounds(BlockSoundGroup.DEEPSLATE), UniformIntProvider.create(3, 4));
     public static final Block ANVILTABLE = new AnvilTable(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block MAGICTABLE = new MagicTable(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block INFUSION_BLOCK = new InfusionBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
