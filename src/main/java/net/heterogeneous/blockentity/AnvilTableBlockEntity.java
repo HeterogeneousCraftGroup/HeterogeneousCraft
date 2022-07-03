@@ -1,6 +1,5 @@
 package net.heterogeneous.blockentity;
 
-import net.heterogeneous.Main;
 import net.heterogeneous.gui.TheSimpleInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.InventoryProvider;
@@ -18,14 +17,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
+import static net.heterogeneous.block.RegisterBlocks.ANVIL_TABLE_BLOCK_ENTITY;
+
 public class AnvilTableBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, InventoryProvider {
     public Inventory inv = new TheSimpleInventory();
 
     public AnvilTableBlockEntity(BlockPos pos, BlockState state) {
-        super(Main.ANVIL_TABLE_BLOCK_ENTITY, pos, state);
+        super(ANVIL_TABLE_BLOCK_ENTITY, pos, state);
     }
     public AnvilTableBlockEntity(BlockPos pos, BlockState state, World world ) {
-        super(Main.ANVIL_TABLE_BLOCK_ENTITY, pos, state);
+        super(ANVIL_TABLE_BLOCK_ENTITY, pos, state);
         this.world = world;
     }
     @Override

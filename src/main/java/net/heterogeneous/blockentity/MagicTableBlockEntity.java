@@ -1,18 +1,20 @@
 package net.heterogeneous.blockentity;
 
-import net.heterogeneous.Main;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
 
+import static net.heterogeneous.block.RegisterBlocks.MAGICTABLE_BLOCK_ENTITY;
+
+
 public class MagicTableBlockEntity extends BlockEntity {
 
     private boolean active = false;
 
     public MagicTableBlockEntity(BlockPos pos, BlockState state) {
-        super(Main.MagicTableBlockEntity, pos, state);
+        super(MAGICTABLE_BLOCK_ENTITY, pos, state);
     }
 
     @Override

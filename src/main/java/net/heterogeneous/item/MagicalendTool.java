@@ -1,8 +1,9 @@
 package net.heterogeneous.item;
 
-import net.heterogeneous.Main;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+
+import static net.heterogeneous.item.RegisterItems.MAGICALEND;
 
 public class MagicalendTool implements ToolMaterial {
 
@@ -37,7 +38,7 @@ public class MagicalendTool implements ToolMaterial {
     @Override
     //修复原料
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Main.MAGICALEND);
+        return Ingredient.ofItems(MAGICALEND);
     }
 
 }
