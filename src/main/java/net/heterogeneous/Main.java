@@ -42,20 +42,20 @@ public class Main implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static InfusionStick INFUSION_STICK;
 	public static final Logger LOGGER = LoggerFactory.getLogger("modid");
-	public static final ItemGroup TUT_GROUP = FabricItemGroupBuilder.create(
-        new Identifier("tut", "tut"))
+	public static final ItemGroup HC_GROUP = FabricItemGroupBuilder.create(
+        new Identifier("heterogeneouscraft", "heterogeneouscraft"))
         .icon(() -> new ItemStack(INFUSION_STICK))
         .build();
-    public static final FireMagicBookPage Fire = new FireMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
-	public static final IceMagicBookPage Ice = new IceMagicBookPage(new FabricItemSettings().group(TUT_GROUP));
-	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(TUT_GROUP));
-	public static final Item MAGICALEND = new Item(new FabricItemSettings().group(TUT_GROUP));
+    public static final FireMagicBookPage Fire = new FireMagicBookPage(new FabricItemSettings().group(HC_GROUP));
+	public static final IceMagicBookPage Ice = new IceMagicBookPage(new FabricItemSettings().group(HC_GROUP));
+	public static final MagicBookPage BOOK_PAGE = new MagicBookPage(new FabricItemSettings().group(HC_GROUP));
+	public static final Item MAGICALEND = new Item(new FabricItemSettings().group(HC_GROUP));
 
-	public static ToolItem MAGICAL_END_SWORD = new SwordItem(MagicalendTool.INSTANCE, 9, -2.4F, new FabricItemSettings().group(TUT_GROUP));
-	public static ToolItem MAGICAL_END_SICKLE = new SwordItem(MagicalendTool.INSTANCE, 7, -1.8F, new FabricItemSettings().group(TUT_GROUP));
-	public static ToolItem MAGICAL_END_SHOVEL = new ShovelItem(MagicalendTool.INSTANCE, 3, -1.5F, new FabricItemSettings().group(TUT_GROUP));
-	public static ToolItem MAGICAL_END_AXE = new CustomAxeItem(MagicalendTool.INSTANCE, 13, -3.0F, new FabricItemSettings().group(TUT_GROUP));
-	public static ToolItem MAGICAL_END_PICKAXE = new CustomPickaxeItem(MagicalendTool.INSTANCE, 4, -2.8F, new FabricItemSettings().group(TUT_GROUP));
+	public static ToolItem MAGICAL_END_SWORD = new SwordItem(MagicalendTool.INSTANCE, 9, -2.4F, new FabricItemSettings().group(HC_GROUP));
+	public static ToolItem MAGICAL_END_SICKLE = new SwordItem(MagicalendTool.INSTANCE, 7, -1.8F, new FabricItemSettings().group(HC_GROUP));
+	public static ToolItem MAGICAL_END_SHOVEL = new ShovelItem(MagicalendTool.INSTANCE, 3, -1.5F, new FabricItemSettings().group(HC_GROUP));
+	public static ToolItem MAGICAL_END_AXE = new CustomAxeItem(MagicalendTool.INSTANCE, 13, -3.0F, new FabricItemSettings().group(HC_GROUP));
+	public static ToolItem MAGICAL_END_PICKAXE = new CustomPickaxeItem(MagicalendTool.INSTANCE, 4, -2.8F, new FabricItemSettings().group(HC_GROUP));
 
 	
 
@@ -91,30 +91,30 @@ public class Main implements ModInitializer {
 		// Proceed with mild caution.,
 
 		LOGGER.info("Hello Fabric world!");
-		INFUSION_STICK = new InfusionStick(new FabricItemSettings().group(TUT_GROUP));
-		Registry.register(Registry.ITEM, new Identifier("tut", "fire"), Fire);
-		Registry.register(Registry.ITEM, new Identifier("tut", "ice"), Ice);
-		Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
-		Registry.register(Registry.ITEM, new Identifier("tut", "infusion_stick"), INFUSION_STICK);
+		INFUSION_STICK = new InfusionStick(new FabricItemSettings().group(HC_GROUP));
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "fire"), Fire);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "ice"), Ice);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "bookpage"), BOOK_PAGE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "infusion_stick"), INFUSION_STICK);
 
-		Registry.register(Registry.ITEM, new Identifier("tut", "infusion_block"), new BlockItem(INFUSION_BLOCK,new FabricItemSettings().group(TUT_GROUP)));
-		Registry.register(Registry.BLOCK, new Identifier("tut", "infusion_block"), INFUSION_BLOCK);
-		Registry.register(Registry.ITEM, new Identifier("tut", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(TUT_GROUP)));
-		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"), MAGICALEND);
-		Registry.register(Registry.BLOCK, new Identifier("tut", "anvil_table"), ANVILTABLE);
-		Registry.register(Registry.ITEM, new Identifier("tut", "anvil_table"), new BlockItem(ANVILTABLE,new FabricItemSettings().group(TUT_GROUP)));
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "infusion_block"), new BlockItem(INFUSION_BLOCK,new FabricItemSettings().group(HC_GROUP)));
+		Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "infusion_block"), INFUSION_BLOCK);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "deepslate_magicalend_ore"), new BlockItem(DEEPSLATE_MAGICALEND_ORE,new FabricItemSettings().group(HC_GROUP)));
+		Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend"), MAGICALEND);
+		Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "anvil_table"), ANVILTABLE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "anvil_table"), new BlockItem(ANVILTABLE,new FabricItemSettings().group(HC_GROUP)));
 
-		Registry.register(Registry.ITEM, new Identifier("tut", "magic_table"), new BlockItem(MAGICTABLE,new FabricItemSettings().group(TUT_GROUP)));
-		Registry.register(Registry.BLOCK, new Identifier("tut", "magic_table"), MAGICTABLE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magic_table"), new BlockItem(MAGICTABLE,new FabricItemSettings().group(HC_GROUP)));
+		Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "magic_table"), MAGICTABLE);
 
 		SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(new Identifier("tut", "anvil_block"), (syncId, inventory) -> new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
 
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"), MAGICAL_END_SWORD);
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sickle"), MAGICAL_END_SICKLE);
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_shovel"), MAGICAL_END_SHOVEL);
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_axe"), MAGICAL_END_AXE);
-		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_pickaxe"), MAGICAL_END_PICKAXE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend_sword"), MAGICAL_END_SWORD);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend_sickle"), MAGICAL_END_SICKLE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend_shovel"), MAGICAL_END_SHOVEL);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend_axe"), MAGICAL_END_AXE);
+		Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", "magicalend_pickaxe"), MAGICAL_END_PICKAXE);
 
 		RegisterArmorItems.register();
 

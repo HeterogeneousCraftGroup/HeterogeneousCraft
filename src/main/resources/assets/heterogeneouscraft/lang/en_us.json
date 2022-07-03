@@ -1,0 +1,19 @@
+{
+  "itemgroup.heterogeneouscraft.heterogeneouscraft": "heterogeneouscraft",
+  "item.heterogeneouscraft.bookpage": "bookpage",
+  "item.heterogeneouscraft.fire": "fire",
+  "item.heterogeneouscraft.ice": "ice",
+  "item.heterogeneouscraft.infusion_stick": "infusion_stick",
+  "item.heterogeneouscraft.infusion_block": "infusion_block",
+  "item.heterogeneouscraft.magicalend": "magicalend",
+  "item.heterogeneouscraft.magicalend_sword": "magicalend_sword",
+  "item.heterogeneouscraft.magicalend_sickle": "magicalend_sickle",
+  "item.heterogeneouscraft.magicalend_shovel": "magicalend_shovel",
+  "item.heterogeneouscraft.magicalend_axe": "magicalend_axe",
+  "item.heterogeneouscraft.magicalend_": "magicalend_",
+  "item.heterogeneouscraft.magicalend_helmet": "magicalend_helmet",
+  "item.heterogeneouscraft.magicalend_chestplate": "magicalend_chestplate",
+  "item.heterogeneouscraft.magicalend_leggings": "magicalend_leggings",
+  "item.heterogeneouscraft.magicalend_boots": "magicalend_boots",
+  "block.heterogeneouscraft.deepslate_magicalend_ore": "deepslate_magicalend_ore"
+}

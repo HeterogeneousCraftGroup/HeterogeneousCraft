@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W W",
+    "R R"
+  ],
+  "key": {
+    "W": {
+      "item": "heterogeneouscraft:magicalend"
+    },
+    "R": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "heterogeneouscraft:magicalend_boots",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": {"model": "heterogeneouscraft:block/infusion_block"},
+        "facing=south": {"model": "heterogeneouscraft:block/infusion_block", "y": 180},
+        "facing=west": {"model": "heterogeneouscraft:block/infusion_block",  "y": 180},
+        "facing=east": {"model": "heterogeneouscraft:block/infusion_block", "y": 90}
+
+    }
+}
