@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": {"model": "heterogeneouscraft:models/block/magic_table"},
+        "facing=north": {"model": "heterogeneouscraft:block/magic_table"},
         "facing=south": {"model": "heterogeneouscraft:block/magic_table", "y": 180},
-        "facing=west": {"model": "heterogeneouscraft:block/magic_table",  "y": 180},
+        "facing=west": {"model": "heterogeneouscraft:block/magic_table",  "y": 270},
         "facing=east": {"model": "heterogeneouscraft:block/magic_table", "y": 90}
 
     }
