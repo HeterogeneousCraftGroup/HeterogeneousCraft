@@ -1,14 +1,6 @@
 package net.heterogeneous;
 
 import net.fabricmc.api.ModInitializer;
-import net.heterogeneous.block.AnvilTable;
-import net.heterogeneous.block.InfusionBlock;
-import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.heterogeneous.blockentity.Infusion;
-import net.heterogeneous.entity.FireBullet;
-import net.heterogeneous.entity.IceBullet;
-import net.heterogeneous.gui.ExampleGuiDescription;
-import net.heterogeneous.item.*;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -16,6 +8,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.heterogeneous.block.AnvilTable;
+import net.heterogeneous.block.InfusionBlock;
+import net.heterogeneous.blockentity.AnvilTableBlockEntity;
+import net.heterogeneous.blockentity.Infusion;
+import net.heterogeneous.entity.FireBullet;
+import net.heterogeneous.entity.IceBullet;
 import net.heterogeneous.item.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -31,13 +29,11 @@ import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main implements ModInitializer {
 	public final static String ModID = "examplemod";
-	public static ScreenHandlerType<ExampleGuiDescription> SCREEN_HANDLER_TYPE ;
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
@@ -99,7 +95,6 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier("tut", "deepslate_magicalend_ore"), DEEPSLATE_MAGICALEND_ORE);
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend"), MAGICALEND);
 		Registry.register(Registry.BLOCK, new Identifier("tut", "anvil_block"), ANVIL_TABLE);
-		SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(new Identifier("tut", "anvil_block"), (syncId, inventory) -> new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
 
 		Registry.register(Registry.ITEM, new Identifier("tut", "magicalend_sword"), MAGICAL_END_SWORD);
 

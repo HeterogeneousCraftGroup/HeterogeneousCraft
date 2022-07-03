@@ -1,11 +1,15 @@
 package net.heterogeneous.block;
 
+import dev.ftb.mods.ftblibrary.ui.BaseScreen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.minecraft.block.Block;
+import net.heterogeneous.gui.TestGui;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.util.ActionResult;
@@ -27,8 +31,8 @@ public class AnvilTable extends BlockWithEntity implements BlockEntityProvider  
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
         return ActionResult.SUCCESS;
 
     }

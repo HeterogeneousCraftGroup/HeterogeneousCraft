@@ -1,7 +1,5 @@
 package net.heterogeneous.entity;
 
-import java.util.Random;
-
 import net.heterogeneous.Main;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -20,6 +18,8 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class IceBullet extends ThrownItemEntity{
     // rand for random number generation

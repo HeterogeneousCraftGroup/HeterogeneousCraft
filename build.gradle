@@ -16,12 +16,37 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-	mavenLocal()
 	maven {
-		name = "AperLambda"
-		url = 'https://aperlambda.github.io/maven'
+		url "https://maven.saps.dev/minecraft"
+		content {
+			includeGroup "dev.ftb.mods"
+			includeGroup "dev.latvian.mods"
+		}
 	}
-	maven { url = "https://jitpack.io" }
+	maven {
+		url "https://maven.architectury.dev/"
+	}
+
+	maven {
+		url "https://www.cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+
+	maven {
+		url "https://maven.saps.dev/minecraft"
+		content {
+			includeGroup "dev.latvian.mods"
+			includeGroup "dev.ftb.mods"
+		}
+	}
+	maven {
+		name = "CottonMC"
+		url = "https://server.bbkr.space/artifactory/libs-release"
+	}
+
+
 }
 
 dependencies {
@@ -32,6 +57,10 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	modImplementation "dev.ftb.mods:ftb-library-fabric:${project.ftb_library_version}"
+	modImplementation include("io.github.cottonmc:LibGui:5.4.2+1.18.2")
+
 }
 
 processResources {

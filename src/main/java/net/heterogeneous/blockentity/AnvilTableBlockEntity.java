@@ -1,9 +1,7 @@
 package net.heterogeneous.blockentity;
 
 import net.heterogeneous.Main;
-import net.heterogeneous.gui.ExampleGuiDescription;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -43,7 +41,7 @@ public class AnvilTableBlockEntity extends LootableContainerBlockEntity implemen
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        return new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.create(world, pos));
+        return null;
     }
 
     @Override
