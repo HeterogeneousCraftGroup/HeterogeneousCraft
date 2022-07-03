@@ -5,25 +5,17 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.heterogeneous.block.AnvilTable;
-import net.heterogeneous.block.InfusionBlock;
-import net.heterogeneous.block.MagicTable;
 import net.heterogeneous.block.RegisterBlocks;
-import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.heterogeneous.blockentity.Infusion;
 import net.heterogeneous.entity.FireBullet;
 import net.heterogeneous.entity.IceBullet;
 import net.heterogeneous.gui.TestGui;
-import net.heterogeneous.item.*;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.entity.BlockEntityType;
+import net.heterogeneous.item.RegisterFoodItems;
+import net.heterogeneous.item.RegisterItems;
+import net.heterogeneous.item.RegisterMaterielsItems;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandlerContext;
@@ -79,8 +71,8 @@ public class Main implements ModInitializer {
 
 		RegisterBlocks.register();
 		RegisterItems.register();
-		RegisterFoodItems.register();
 		RegisterMaterielsItems.register();
+		RegisterFoodItems.register();
 
 		// Registry.register(Registry.ITEM, new Identifier("tut", "bookpage"), BOOK_PAGE);
 		EntityRendererRegistry.register(FireBulletEntityType, (context) ->
