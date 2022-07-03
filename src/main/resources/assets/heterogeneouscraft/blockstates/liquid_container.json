@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": {"model": "heterogeneouscraft:block/liquid_container"},
+    "facing=south": {"model": "heterogeneouscraft:block/liquid_container", "y": 180},
+    "facing=west": {"model": "heterogeneouscraft:block/liquid_container",  "y": 270},
+    "facing=east": {"model": "heterogeneouscraft:block/liquid_container", "y": 90}
+
+  }
+}
