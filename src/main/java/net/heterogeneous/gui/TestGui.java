@@ -2,6 +2,10 @@ package net.heterogeneous.gui;
 
 import io.github.cottonmc.cotton.gui.SyncedGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.WDynamicLabel;
+import io.github.cottonmc.cotton.gui.widget.WGridPanel;
+import io.github.cottonmc.cotton.gui.widget.WItemSlot;
+import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.heterogeneous.Main;
 import net.minecraft.block.Block;
@@ -10,7 +14,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.text.Text;
 
 public class TestGui extends SyncedGuiDescription {
     private static final int INVENTORY_SIZE = 27;
@@ -21,6 +24,7 @@ public class TestGui extends SyncedGuiDescription {
         setRootPanel(root);
         root.setSize(200, 200);
         root.setInsets(Insets.ROOT_PANEL);
+
 
         WItemSlot label = WItemSlot.of(getBlockInventory(context, 27), 0);
         root.add(label, 1, 1);

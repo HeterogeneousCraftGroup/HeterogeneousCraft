@@ -1,11 +1,12 @@
 package net.heterogeneous.item;
 
-import net.heterogeneous.Main;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+
+import static net.heterogeneous.item.RegisterItems.MAGICALEND;
 
 public class MagicalendArmor implements ArmorMaterial {
     private static final int[] BASE_DURABILITY = new int[] {13, 15, 16, 11};
@@ -39,7 +40,7 @@ public class MagicalendArmor implements ArmorMaterial {
     @Override
     //修复材料
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Main.MAGICALEND);
+        return Ingredient.ofItems(MAGICALEND);
     }
 
     @Override

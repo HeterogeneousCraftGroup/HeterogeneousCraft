@@ -1,6 +1,5 @@
 package net.heterogeneous.blockentity;
 
-import net.heterogeneous.Main;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,11 +9,14 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
 
+import static net.heterogeneous.block.RegisterBlocks.INFUSION;
+import static net.heterogeneous.item.RegisterItems.*;
+
 public class Infusion extends BlockEntity  {
     private boolean active = false;
 
     public Infusion(BlockPos pos, BlockState state) {
-        super(Main.INFUSION, pos, state);
+        super(INFUSION, pos, state);
     }
 
     public void setActive(boolean b) {
@@ -39,13 +41,13 @@ public class Infusion extends BlockEntity  {
         BlockPos pos = this.getPos().down(1);
         assert world != null;
         if(world.getBlockState(pos).getBlock().getClass() == Blocks.FIRE.getDefaultState().getBlock().getClass()){
-            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Main.Fire)));
+            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Fire)));
             }
         else if(world.getBlockState(pos).getBlock().getClass() == Blocks.ICE.getDefaultState().getBlock().getClass()){
-            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Main.Ice)));
+            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Ice)));
         }
         else {
-            world.spawnEntity(new ItemEntity(world,pos.getX(),pos.getY()+2,pos.getZ(),new ItemStack(Main.BOOK_PAGE)));
+            world.spawnEntity(new ItemEntity(world,pos.getX(),pos.getY()+2,pos.getZ(),new ItemStack(BOOK_PAGE)));
         }
     }
 

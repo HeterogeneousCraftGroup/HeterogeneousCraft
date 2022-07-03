@@ -6,6 +6,10 @@ import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.heterogeneous.gui.ExampleBlockScreen;
 import net.heterogeneous.gui.TestGui;
 import net.minecraft.client.render.RenderLayer;
+
+import static net.heterogeneous.block.RegisterBlocks.INFUSION_BLOCK;
+import static net.heterogeneous.block.RegisterBlocks.MAGICTABLE;
+
 public class ClientMod implements ClientModInitializer {
     @Override
 	public void onInitializeClient() {

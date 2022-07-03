@@ -15,7 +15,6 @@ public class WForge extends WWidget {
     @Environment(EnvType.CLIENT)
     @Override
     public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY) {
-        ScreenDrawing.drawString();
     }
     public Template getTemplate() {
         return template;
