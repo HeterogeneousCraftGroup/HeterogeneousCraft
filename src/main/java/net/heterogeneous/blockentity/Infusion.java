@@ -37,9 +37,16 @@ public class Infusion extends BlockEntity  {
 
     public void infuse() {
         BlockPos pos = this.getPos().down(1);
+        assert world != null;
         if(world.getBlockState(pos).getBlock().getClass() == Blocks.FIRE.getDefaultState().getBlock().getClass()){
             world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Main.Fire)));
             }
+        else if(world.getBlockState(pos).getBlock().getClass() == Blocks.ICE.getDefaultState().getBlock().getClass()){
+            world.spawnEntity(new ItemEntity(world, pos.getX(),pos.getY()+2,pos.getZ(), new ItemStack(Main.Ice)));
+        }
+        else {
+            world.spawnEntity(new ItemEntity(world,pos.getX(),pos.getY()+2,pos.getZ(),new ItemStack(Main.BOOK_PAGE)));
+        }
     }
 
     public BlockEntityUpdateS2CPacket toUpdatePacket() {

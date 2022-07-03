@@ -1,24 +1,32 @@
 package net.heterogeneous.blockentity;
 
 import net.heterogeneous.Main;
-import net.heterogeneous.gui.ExampleGuiDescription;
+import net.heterogeneous.gui.TheSimpleInventory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.InventoryProvider;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
-public class AnvilTableBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory {
+public class AnvilTableBlockEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, InventoryProvider {
+    public Inventory inv = new TheSimpleInventory();
+
     public AnvilTableBlockEntity(BlockPos pos, BlockState state) {
         super(Main.ANVIL_TABLE_BLOCK_ENTITY, pos, state);
+    }
+    public AnvilTableBlockEntity(BlockPos pos, BlockState state, World world ) {
+        super(Main.ANVIL_TABLE_BLOCK_ENTITY, pos, state);
+        this.world = world;
     }
     @Override
     public Text getDisplayName() {
@@ -28,6 +36,7 @@ public class AnvilTableBlockEntity extends LootableContainerBlockEntity implemen
 
     @Override
     protected Text getContainerName() {
+
         return null;
     }
 
@@ -41,10 +50,11 @@ public class AnvilTableBlockEntity extends LootableContainerBlockEntity implemen
 
     }
 
-    @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        return new ExampleGuiDescription(syncId, inventory, ScreenHandlerContext.create(world, pos));
-    }
+//    @Override
+//    public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
+//        System.out.print(""+this.getWorld()+this.getPos());
+//        return new TestGui(syncId, inventory, ScreenHandlerContext.create(this.getWorld(), this.getPos()));
+//    }
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
@@ -54,5 +64,10 @@ public class AnvilTableBlockEntity extends LootableContainerBlockEntity implemen
     @Override
     public int size() {
         return 0;
+    }
+
+    @Override
+    public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
+        return (SidedInventory) inv;
     }
 }

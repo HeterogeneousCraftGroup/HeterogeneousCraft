@@ -1,7 +1,8 @@
 package net.heterogeneous.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -19,23 +20,31 @@ public class AnvilTable extends BlockWithEntity implements BlockEntityProvider  
     public AnvilTable(Settings settings) {
         super(settings);
     }
-
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new AnvilTableBlockEntity(pos,state);
     }
+    @Nullable
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state, World world) {
+        return new AnvilTableBlockEntity(pos,state,world);
+    }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+
         return ActionResult.SUCCESS;
 
     }
 
+
     @Nullable
     @Override
     public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return (NamedScreenHandlerFactory) createBlockEntity(pos, state);
+        return (NamedScreenHandlerFactory) createBlockEntity(pos, state,world);
     }
+
+
 }
