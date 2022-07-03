@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W",
+    "W",
+    "R"
+  ],
+  "key": {
+    "W": {
+      "item": "heterogeneouscraft:magicalend"
+    },
+    "R": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "heterogeneouscraft:magicalend_sword",
+    "count": 1
+  }
+}

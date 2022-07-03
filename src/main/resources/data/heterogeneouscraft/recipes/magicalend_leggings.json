@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RWR",
+    "W W",
+    "W W"
+  ],
+  "key": {
+    "W": {
+      "item": "heterogeneouscraft:magicalend"
+    },
+    "R": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "heterogeneouscraft:magicalend_leggings",
+    "count": 1
+  }
+}

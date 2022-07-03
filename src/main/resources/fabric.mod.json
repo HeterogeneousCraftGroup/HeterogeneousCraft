@@ -6,7 +6,7 @@
   "name": "Heterogeneous Craft",
   "description": "The mod goal is to improve short-distance weapon and magical weapon, make them useful and fun.",
   "authors": [
-    "G-Breeze",
+    "G_Breeze",
     "fafa_junhe"
   ],
   "contact": {
@@ -15,7 +15,7 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/tut/icon.png",
+  "icon": "assets/heterogeneouscraft/icon.png",
 
   "environment": "*",
   "entrypoints": {

@@ -1,21 +1,16 @@
 package net.heterogeneous.blockentity;
 
 import net.heterogeneous.Main;
-import net.heterogeneous.gui.ImplementedInventory;
-import net.heterogeneous.gui.TestGui;
 import net.heterogeneous.gui.TheSimpleInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.InventoryProvider;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
@@ -55,11 +50,11 @@ public class AnvilTableBlockEntity extends LootableContainerBlockEntity implemen
 
     }
 
-    @Override
-    public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        System.out.print(""+this.getWorld()+this.getPos());
-        return new TestGui(syncId, inventory, ScreenHandlerContext.create(this.getWorld(), this.getPos()));
-    }
+//    @Override
+//    public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
+//        System.out.print(""+this.getWorld()+this.getPos());
+//        return new TestGui(syncId, inventory, ScreenHandlerContext.create(this.getWorld(), this.getPos()));
+//    }
 
     @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {

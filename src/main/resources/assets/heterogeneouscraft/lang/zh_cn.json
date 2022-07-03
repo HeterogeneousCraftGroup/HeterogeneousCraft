@@ -1,0 +1,19 @@
+{
+  "itemgroup.heterogeneouscraft.heterogeneouscraft": "异次元工艺",
+  "item.heterogeneouscraft.bookpage": "魔法书页(空白)",
+  "item.heterogeneouscraft.fire": "火魔法书页",
+  "item.heterogeneouscraft.ice": "冰魔法书页",
+  "item.heterogeneouscraft.infusion_stick": "附魔棒",
+  "item.heterogeneouscraft.infusion_block": "书台",
+  "item.heterogeneouscraft.magicalend": "魔法渊石",
+  "item.heterogeneouscraft.magicalend_sword": "魔渊剑",
+  "item.heterogeneouscraft.magicalend_sickle": "魔渊镰",
+  "item.heterogeneouscraft.magicalend_shovel": "魔渊铲",
+  "item.heterogeneouscraft.magicalend_axe": "魔渊斧",
+  "item.heterogeneouscraft.magicalend_": "魔渊镐",
+  "item.heterogeneouscraft.magicalend_helmet": "魔渊帽",
+  "item.heterogeneouscraft.magicalend_chestplate": "魔渊衣甲",
+  "item.heterogeneouscraft.magicalend_leggings": "魔渊护腿",
+  "item.heterogeneouscraft.magicalend_boots": "魔渊鞋",
+  "block.heterogeneouscraft.deepslate_magicalend_ore": "魔法渊石原矿"
+}
