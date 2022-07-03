@@ -1,4 +1,4 @@
-package net.heterogeneous.item;
+package net.heterogeneous.item.materiels;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

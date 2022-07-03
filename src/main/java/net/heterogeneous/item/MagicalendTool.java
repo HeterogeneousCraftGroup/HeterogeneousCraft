@@ -1,6 +1,6 @@
 package net.heterogeneous.item;
 
-import net.minecraft.item.Items;
+import net.heterogeneous.Main;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
@@ -26,7 +26,7 @@ public class MagicalendTool implements ToolMaterial {
     @Override
     //挖掘等级
     public int getMiningLevel() {
-        return 1;
+        return 5;
     }
     @Override
     //附魔能力(越高越好(指等级
@@ -37,7 +37,7 @@ public class MagicalendTool implements ToolMaterial {
     @Override
     //修复原料
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(Items.POTATO);
+        return Ingredient.ofItems(Main.MAGICALEND);
     }
 
 }

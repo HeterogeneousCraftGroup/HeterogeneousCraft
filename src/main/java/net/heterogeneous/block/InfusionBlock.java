@@ -7,6 +7,7 @@ import net.heterogeneous.item.MagicBookPage;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -25,7 +26,8 @@ import net.minecraft.world.World;
 public class InfusionBlock extends Block implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public InfusionBlock(Settings settings) {
-        super(settings);
+        super(Settings.of(Material.STONE).nonOpaque());
+
     }
 
     @Override
@@ -75,4 +77,14 @@ public class InfusionBlock extends Block implements BlockEntityProvider {
         }
         return ActionResult.FAIL;
     }
+
+//    @Override
+//    public boolean isFullCube(BlockView world, BlockPos pos) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isOpaqueCube() {
+//        return false;
+//    }
 }
