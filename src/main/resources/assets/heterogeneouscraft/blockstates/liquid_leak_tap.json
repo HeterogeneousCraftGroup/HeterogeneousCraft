@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": {"model": "heterogeneouscraft:block/liquid_leak_tap"},
+    "facing=south": {"model": "heterogeneouscraft:block/liquid_leak_tap", "y": 180},
+    "facing=west": {"model": "heterogeneouscraft:block/liquid_leak_tap",  "y": 270},
+    "facing=east": {"model": "heterogeneouscraft:block/liquid_leak_tap", "y": 90}
+
+  }
+}

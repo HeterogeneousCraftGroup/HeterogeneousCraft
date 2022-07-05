@@ -7,6 +7,8 @@
   "item.heterogeneouscraft.infusion_stick": "附魔棒",
   "block.heterogeneouscraft.infusion_block": "书台",
   "block.heterogeneouscraft.liquid_container": "流体缸",
+  "block.heterogeneouscraft.base_melting_furnace": "熔炼炉(基础)",
+  "block.heterogeneouscraft.liquid_leak_tap": "排液口",
   "block.heterogeneouscraft.magic_table": "魔法书桌",
   "item.heterogeneouscraft.magicalend": "魔法渊石",
   "item.heterogeneouscraft.magicalend_sword": "魔渊剑",
