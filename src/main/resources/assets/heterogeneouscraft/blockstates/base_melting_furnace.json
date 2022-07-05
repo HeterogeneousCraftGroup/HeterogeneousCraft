@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north": {"model": "heterogeneouscraft:block/base_melting_furnace"},
+    "facing=south": {"model": "heterogeneouscraft:block/base_melting_furnace", "y": 180},
+    "facing=west": {"model": "heterogeneouscraft:block/base_melting_furnace",  "y": 270},
+    "facing=east": {"model": "heterogeneouscraft:block/base_melting_furnace", "y": 90}
+
+  }
+}
