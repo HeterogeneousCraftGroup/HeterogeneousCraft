@@ -1,5 +1,6 @@
 package net.heterogeneous.block;
 
+import net.heterogeneous.blockentity.LiquidContainerEntity;
 import net.heterogeneous.blockentity.MagicTableBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
@@ -32,14 +33,14 @@ public class LiquidContainer extends Block implements BlockEntityProvider {
     public LiquidContainer(Settings settings) {
         super(Settings.of(Material.STONE).nonOpaque());
     }
-
+    
 
 
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new MagicTableBlockEntity(pos,state);
+        return new LiquidContainerEntity(pos,state);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class LiquidContainer extends Block implements BlockEntityProvider {
         return ActionResult.SUCCESS;
 
     }
-
+    
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
         // TODO Auto-generated method stub

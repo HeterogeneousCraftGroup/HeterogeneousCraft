@@ -1,7 +1,7 @@
 package net.heterogeneous.block;
 
 
-import net.heterogeneous.blockentity.Infusion;
+import net.heterogeneous.blockentity.InfusionBlockEntity;
 import net.heterogeneous.item.InfusionStick;
 import net.heterogeneous.item.MagicBookPage;
 import net.minecraft.block.Block;
@@ -32,7 +32,7 @@ public class InfusionBlock extends Block implements BlockEntityProvider {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new Infusion(pos, state);
+        return new InfusionBlockEntity(pos, state);
     }
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
@@ -60,7 +60,7 @@ public class InfusionBlock extends Block implements BlockEntityProvider {
         // TODO Auto-generated method stub
         if (!world.isClient) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof Infusion infusion) {
+            if (blockEntity instanceof InfusionBlockEntity infusion) {
                 if (player.getMainHandStack().getItem().getClass() == MagicBookPage.class & !infusion.getActive()) {
                     player.sendMessage(Text.of("hello"), true);
                     player.getMainHandStack().decrement(1);

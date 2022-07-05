@@ -12,10 +12,10 @@ import net.minecraft.util.math.BlockPos;
 import static net.heterogeneous.block.RegisterBlocks.INFUSION;
 import static net.heterogeneous.item.RegisterItems.*;
 
-public class Infusion extends BlockEntity  {
+public class InfusionBlockEntity extends BlockEntity  {
     private boolean active = false;
 
-    public Infusion(BlockPos pos, BlockState state) {
+    public InfusionBlockEntity(BlockPos pos, BlockState state) {
         super(INFUSION, pos, state);
     }
 

@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class BlockRegisterItem {
-    public static void registeritem(Block block,String path) {
-        Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", path), new BlockItem(block,new FabricItemSettings().group(Main.HC_GROUP)));
+    public static BlockItem registeritem(Block block,String path) {
+        return Registry.register(Registry.ITEM, new Identifier("heterogeneouscraft", path), new BlockItem(block,new FabricItemSettings().group(Main.HC_GROUP)));
     }
 }

@@ -10,7 +10,7 @@ import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.heterogeneous.Main;
 import net.heterogeneous.gui.widget.WForge;
 import net.heterogeneous.gui.widget.WLine;
-import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;

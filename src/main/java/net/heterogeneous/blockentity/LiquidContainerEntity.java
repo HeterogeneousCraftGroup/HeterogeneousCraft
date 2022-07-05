@@ -8,11 +8,13 @@ import net.minecraft.util.math.BlockPos;
 
 import static net.heterogeneous.block.RegisterBlocks.MAGICTABLE_BLOCK_ENTITY;
 
+import net.heterogeneous.block.RegisterBlocks;
+
 public class LiquidContainerEntity extends BlockEntity {
     private boolean active = false;
 
     public LiquidContainerEntity(BlockPos pos, BlockState state) {
-        super(MAGICTABLE_BLOCK_ENTITY, pos, state);
+        super(RegisterBlocks.LIQUID_CONTAINER_ENTITY, pos, state);
     }
 
     @Override
