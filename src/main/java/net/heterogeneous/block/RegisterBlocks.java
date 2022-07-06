@@ -2,10 +2,6 @@ package net.heterogeneous.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.heterogeneous.blockentity.AnvilTableBlockEntity;
-import net.heterogeneous.blockentity.InfusionBlockEntity;
-import net.heterogeneous.blockentity.LiquidContainerEntity;
-import net.heterogeneous.blockentity.MagicTableBlockEntity;
 import net.heterogeneous.blockentity.*;
 import net.heterogeneous.item.BlockRegisterItem;
 import net.minecraft.block.Block;
@@ -13,7 +9,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -28,6 +23,7 @@ public class RegisterBlocks {
     public static final Block LIQUID_CONTAINER = new LiquidContainer(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block BASE_MELTING_FURNACE = new BaseMeltingFurnace(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static final Block LIQUID_LEAK_TAP = new LiquidLeakTap(FabricBlockSettings.of(Material.METAL).strength(4.0f));
+    public static final Block MAGICALEND_CHEST = new MagicalendChest(FabricBlockSettings.of(Material.METAL).strength(4.0f));
     public static BlockEntityType<AnvilTableBlockEntity> ANVIL_TABLE_BLOCK_ENTITY;
     public static BlockEntityType<net.heterogeneous.blockentity.MagicTableBlockEntity> MAGICTABLE_BLOCK_ENTITY;
     public static BlockEntityType<InfusionBlockEntity> INFUSION;
@@ -35,6 +31,7 @@ public class RegisterBlocks {
     public static Item WATER;
     public static BlockEntityType<BaseMeltingFurnaceEntity> BASE_MELTING_FURNACE_ENTITY;
     public static BlockEntityType<LiquidLeakTapEntity> LIQUID_LEAK_TAP_ENTITY;
+    public static BlockEntityType<MagicalendChestEntity> MAGICALEND_CHEST_ENTITY;
     public static void register() {
         //方块物品注册
         BlockRegisterItem.registeritem(INFUSION_BLOCK,"infusion_block");
@@ -45,6 +42,7 @@ public class RegisterBlocks {
         WATER = BlockRegisterItem.registeritem(Blocks.WATER, "water");
         BlockRegisterItem.registeritem(BASE_MELTING_FURNACE, "base_melting_furnace");
         BlockRegisterItem.registeritem(LIQUID_LEAK_TAP, "liquid_leak_tap");
+        BlockRegisterItem.registeritem(MAGICALEND_CHEST, "magicalend_chest");
 
         //方块注册
         Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "infusion_block"), INFUSION_BLOCK);
@@ -54,6 +52,7 @@ public class RegisterBlocks {
         Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "liquid_container"), LIQUID_CONTAINER);
         Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "base_melting_furnace"), BASE_MELTING_FURNACE);
         Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "liquid_leak_tap"), LIQUID_LEAK_TAP);
+        Registry.register(Registry.BLOCK, new Identifier("heterogeneouscraft", "magicalend_chest"), MAGICALEND_CHEST);
 
         //方块实体注册
         INFUSION = Registry.register(Registry.BLOCK_ENTITY_TYPE, "infusion", FabricBlockEntityTypeBuilder.create(InfusionBlockEntity::new, INFUSION_BLOCK).build(null));
@@ -62,6 +61,7 @@ public class RegisterBlocks {
         LIQUID_CONTAINER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "liquid_container", FabricBlockEntityTypeBuilder.create(LiquidContainerEntity::new, LIQUID_CONTAINER).build(null));
         BASE_MELTING_FURNACE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "base_melting_furnace", FabricBlockEntityTypeBuilder.create(BaseMeltingFurnaceEntity::new, BASE_MELTING_FURNACE).build(null));
         LIQUID_LEAK_TAP_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "liquid_leak_tap", FabricBlockEntityTypeBuilder.create(LiquidLeakTapEntity::new, LIQUID_LEAK_TAP).build(null));
+        MAGICALEND_CHEST_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "magicalend_chest", FabricBlockEntityTypeBuilder.create(MagicalendChestEntity::new, MAGICALEND_CHEST).build(null));
         // Registry.register(Registry.ENTITY_TYPE, new Identifier("tut","firebullet"), FIRE_BULLET)
     }
 }
