@@ -47,7 +47,7 @@ public class WForge extends WWidget {
         if(inv.getStack(0).getItem() == Items.AIR){
             return;
         }
-
+        
 //        Registry.ITEM.getId(inv.getStack(0).getItem());
         ScreenDrawing.texturedRect(matrices,x,y,100,100,new Texture(new Identifier(Registry.ITEM.getId(this.inv.getStack(0).getItem()).getNamespace(), String.format("textures/item/%s.png", Registry.ITEM.getId(this.inv.getStack(0).getItem()).getPath()))), 0xFF_FFFFFF);
     }

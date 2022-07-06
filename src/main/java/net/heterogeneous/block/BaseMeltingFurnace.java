@@ -1,6 +1,6 @@
 package net.heterogeneous.block;
 
-import net.heterogeneous.blockentity.Infusion;
+import net.heterogeneous.blockentity.InfusionBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -28,7 +28,7 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new Infusion(pos, state);
+        return new InfusionBlockEntity(pos, state);
     }
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
