@@ -1,36 +1,81 @@
 package net.heterogeneous.blockentity;
 
+import net.heterogeneous.gui.BaseMeltingFurnaceGui;
+import net.heterogeneous.gui.TheSimpleInventory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.block.InventoryProvider;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
-import static net.heterogeneous.block.RegisterBlocks.MAGICTABLE_BLOCK_ENTITY;
+import static net.heterogeneous.block.RegisterBlocks.BASE_MELTING_FURNACE_ENTITY;
 
-public class BaseMeltingFurnaceEntity extends BlockEntity {
-    private boolean active = false;
+public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, InventoryProvider {
+    public Inventory inv = new TheSimpleInventory();
 
     public BaseMeltingFurnaceEntity(BlockPos pos, BlockState state) {
-        super(MAGICTABLE_BLOCK_ENTITY, pos, state);
+        super(BASE_MELTING_FURNACE_ENTITY, pos, state);
+    }
+    public BaseMeltingFurnaceEntity(BlockPos pos, BlockState state, World world ) {
+        super(BASE_MELTING_FURNACE_ENTITY, pos, state);
+        this.world = world;
+    }
+    @Override
+    public Text getDisplayName() {
+        // Using the block name as the screen title
+        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
     }
 
     @Override
-    public void writeNbt(NbtCompound tag) {
-        // Save the current value of the number to the tag
-        tag.putBoolean("active", active);
+    protected Text getContainerName() {
 
-        super.writeNbt(tag);
+        return null;
     }
-    // Deserialize the BlockEntity
+
     @Override
-    public void readNbt(NbtCompound tag) {
-        super.readNbt(tag);
-
-        active = tag.getBoolean("active");
+    protected DefaultedList<ItemStack> getInvStackList() {
+        return null;
     }
 
-    public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+    @Override
+    protected void setInvStackList(DefaultedList<ItemStack> list) {
+
+    }
+
+    @Override
+    public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
+        System.out.print(""+this.getWorld()+this.getPos());
+        return new BaseMeltingFurnaceGui(syncId, inventory, ScreenHandlerContext.create(this.getWorld(), this.getPos()));
+    }
+
+    @Override
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return null;
+    }
+    // @Override
+    // public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
+    //     return inv;
+    //     // return super.getInventory(state, world, pos);
+    // }
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
+        return (SidedInventory) inv;
     }
 }

@@ -1,6 +1,7 @@
 package net.heterogeneous.block;
 
 import net.heterogeneous.blockentity.InfusionBlockEntity;
+import net.heterogeneous.blockentity.BaseMeltingFurnaceEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -8,6 +9,7 @@ import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -18,6 +20,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
@@ -25,10 +28,9 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
         super(Settings.of(Material.STONE).nonOpaque());
 
     }
-
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new InfusionBlockEntity(pos, state);
+    @Nullable
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state, World world) {
+        return new BaseMeltingFurnaceEntity(pos, state, world);
     }
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
@@ -53,6 +55,17 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
     // onuse
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
         return ActionResult.SUCCESS;
+    }
+    @Nullable
+    @Override
+    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+        return (NamedScreenHandlerFactory) createBlockEntity(pos, state,world);
+    }
+    @Override
+    public BlockEntity createBlockEntity(BlockPos var1, BlockState var2) {
+        return new BaseMeltingFurnaceEntity(var1, var2);
+        // return null;
     }
 }

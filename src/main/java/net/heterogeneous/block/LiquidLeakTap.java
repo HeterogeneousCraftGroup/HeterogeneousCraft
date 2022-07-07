@@ -1,6 +1,7 @@
 package net.heterogeneous.block;
 
 import net.heterogeneous.blockentity.InfusionBlockEntity;
+import net.heterogeneous.blockentity.LiquidLeakTapEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -28,7 +29,7 @@ public class LiquidLeakTap extends Block implements BlockEntityProvider {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new InfusionBlockEntity(pos, state);
+        return new LiquidLeakTapEntity(pos, state);
     }
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {

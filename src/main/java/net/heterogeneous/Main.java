@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.heterogeneous.block.RegisterBlocks;
 import net.heterogeneous.entity.FireBullet;
 import net.heterogeneous.entity.IceBullet;
+import net.heterogeneous.gui.BaseMeltingFurnaceGui;
 import net.heterogeneous.gui.TestGui;
 import net.heterogeneous.item.RegisterFoodItems;
 import net.heterogeneous.item.RegisterItems;
@@ -30,6 +31,7 @@ import static net.heterogeneous.item.RegisterItems.INFUSION_STICK;
 public class Main implements ModInitializer {
 	public final static String ModID = "heterogeneouscraft";
 	public static ScreenHandlerType<TestGui> SCREEN_HANDLER_TYPE ;
+	public static ScreenHandlerType<BaseMeltingFurnaceGui> BASE_MELTING_FURNACE_SCREEN ;
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
@@ -68,6 +70,7 @@ public class Main implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(new Identifier("heterogeneouscraft", "anvil_block"), (syncId, inventory) -> new TestGui(syncId, inventory, ScreenHandlerContext.EMPTY));
+		BASE_MELTING_FURNACE_SCREEN = ScreenHandlerRegistry.registerSimple(new Identifier("heterogeneouscraft", "base_melting_furnace"), (syncId, inventory) -> new BaseMeltingFurnaceGui(syncId, inventory, ScreenHandlerContext.EMPTY));
 
 		RegisterBlocks.register();
 		RegisterItems.register();
