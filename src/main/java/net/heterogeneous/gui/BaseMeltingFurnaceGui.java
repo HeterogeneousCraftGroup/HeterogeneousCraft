@@ -1,6 +1,7 @@
 package net.heterogeneous.gui;
 
 import java.util.Optional;
+import java.util.function.BiFunction;
 
 import io.github.cottonmc.cotton.gui.SyncedGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.WItemSlot;
@@ -32,18 +33,26 @@ public class BaseMeltingFurnaceGui extends SyncedGuiDescription {
         root.setSize(X, Y);
         root.setInsets(Insets.ROOT_PANEL);
         // get the block entity from the context
-        Optional<Object> blockEntity = context.get((world,pos)->{
-                System.out.print("");
-            }
-        );
-        
-        
+        Optional<BlockEntity> temp = context.get((world,pos)->{
+            System.out.print("pos"+pos+world);
+            return world.getBlockEntity(pos);
+        });
+        if(temp.isPresent()){
+            BlockEntity be = temp.get();
+            
+        }
         WItemSlot oresSlot = new WItemSlot(blockInventory, 0, 1, 1, false);
-        ((TheSimpleInventory)blockInventory).setChangeEvent(new Runnable() {
+        oresSlot.addChangeListener(new ChangeListener() {
+
             @Override
-            public void run() {
+            public void onStackChanged(WItemSlot slot, Inventory inventory, int index, ItemStack stack) {
+                if(stack == null || stack.getItem() == Items.LAVA_BUCKET) {
+                    blockInventory.setStack(1, new ItemStack(Items.BUCKET, 0));
+                    
+                }
                 
             }
+            
         });
         WItemSlot fuelSlot = new WItemSlot(blockInventory, 1, 1, 1, false);
         WItemSlot endSlot_one = new WItemSlot(blockInventory, 2, 1, 1, false);

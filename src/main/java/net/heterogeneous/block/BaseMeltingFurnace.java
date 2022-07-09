@@ -7,6 +7,8 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -32,6 +34,7 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state, World world) {
         return new BaseMeltingFurnaceEntity(pos, state, world);
     }
+    
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
         // TODO Auto-generated method stub
@@ -67,5 +70,11 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
     public BlockEntity createBlockEntity(BlockPos var1, BlockState var2) {
         return new BaseMeltingFurnaceEntity(var1, var2);
         // return null;
+    }
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state,
+            BlockEntityType<T> type) {
+        System.out.print("i'm ticking");
+        return BlockEntityProvider.super.getTicker(world, state, type);
     }
 }

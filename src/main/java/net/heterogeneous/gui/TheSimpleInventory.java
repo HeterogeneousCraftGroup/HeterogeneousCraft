@@ -37,7 +37,9 @@ public class TheSimpleInventory implements ImplementedInventory, SidedInventory 
         if (stack.getCount() > getMaxCountPerStack()) {
             stack.setCount(getMaxCountPerStack());
         }
-        onContentsChanged.run();
+        if(onContentsChanged != null){
+            onContentsChanged.run();
 
+        }
     }
 }
