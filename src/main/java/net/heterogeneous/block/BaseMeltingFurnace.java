@@ -5,6 +5,7 @@ import net.heterogeneous.blockentity.BaseMeltingFurnaceEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -24,7 +25,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
+public class BaseMeltingFurnace extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public BaseMeltingFurnace(Settings settings) {
         super(Settings.of(Material.STONE).nonOpaque());
@@ -72,9 +73,7 @@ public class BaseMeltingFurnace extends Block implements BlockEntityProvider {
         // return null;
     }
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state,
-            BlockEntityType<T> type) {
-        System.out.print("i'm ticking");
-        return BlockEntityProvider.super.getTicker(world, state, type);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, RegisterBlocks.BASE_MELTING_FURNACE_ENTITY, (world1, pos, state1, be) -> BaseMeltingFurnaceEntity.tick(world1, pos, state1, be));
     }
 }

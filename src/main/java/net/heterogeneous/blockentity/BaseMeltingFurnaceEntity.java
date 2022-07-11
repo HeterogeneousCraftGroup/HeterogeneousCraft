@@ -10,7 +10,9 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
@@ -22,9 +24,46 @@ import net.minecraft.world.WorldAccess;
 
 import static net.heterogeneous.block.RegisterBlocks.BASE_MELTING_FURNACE_ENTITY;
 
-public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity implements NamedScreenHandlerFactory, InventoryProvider {
-    public Inventory inv = new TheSimpleInventory();
+import io.github.cottonmc.cotton.gui.PropertyDelegateHolder;
 
+public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity implements PropertyDelegateHolder, NamedScreenHandlerFactory, InventoryProvider {
+    public Inventory inv = new TheSimpleInventory();
+    private float fuel;
+    private float progress;
+    protected final PropertyDelegate propertyDelegate = new PropertyDelegate(){
+
+        @Override
+        public int get(int index) {
+            switch (index) {
+                case 0: {
+                    return (int) BaseMeltingFurnaceEntity.this.fuel;
+                }
+                case 1: {
+                    return  (int) BaseMeltingFurnaceEntity.this.progress;
+                }
+            }
+            return 0;
+        }
+
+        @Override
+        public void set(int index, int value) {
+            switch (index) {
+                case 0: {
+                    BaseMeltingFurnaceEntity.this.fuel = value;
+                    break;
+                }
+                case 1: {
+                    BaseMeltingFurnaceEntity.this.progress = value;
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public int size() {
+            return 2;
+        }
+    };
     public BaseMeltingFurnaceEntity(BlockPos pos, BlockState state) {
         super(BASE_MELTING_FURNACE_ENTITY, pos, state);
     }
@@ -56,7 +95,7 @@ public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity imple
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        System.out.print(""+this.getWorld()+this.getPos());
+        // System.out.print(""+this.getWtaorld()+this.getPos());
         return new BaseMeltingFurnaceGui(syncId, inventory, ScreenHandlerContext.create(this.getWorld(), this.getPos()));
     }
 
@@ -73,9 +112,23 @@ public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity imple
     public int size() {
         return 0;
     }
-
+    public static void tick(World world, BlockPos pos, BlockState state, BaseMeltingFurnaceEntity be) {
+        be.fuel--;
+        // System.out.print(pos);
+    }
     @Override
     public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
         return (SidedInventory) inv;
+    }
+    public void setFuelTime(int i) {
+        fuel = i;
+    }
+    public float getFuelTime(){
+        return fuel;
+    }
+    @Override
+    public PropertyDelegate getPropertyDelegate() {
+        
+        return propertyDelegate;
     }
 }
