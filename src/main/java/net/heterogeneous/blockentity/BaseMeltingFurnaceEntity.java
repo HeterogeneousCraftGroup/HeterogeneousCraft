@@ -1,20 +1,26 @@
 package net.heterogeneous.blockentity;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.heterogeneous.block.ImplementedInventory;
 import net.heterogeneous.gui.BaseMeltingFurnaceGui;
 import net.heterogeneous.gui.TheSimpleInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.InventoryProvider;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
@@ -26,11 +32,11 @@ import static net.heterogeneous.block.RegisterBlocks.BASE_MELTING_FURNACE_ENTITY
 
 import io.github.cottonmc.cotton.gui.PropertyDelegateHolder;
 
-public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity implements PropertyDelegateHolder, NamedScreenHandlerFactory, InventoryProvider {
-    public Inventory inv = new TheSimpleInventory();
+public class BaseMeltingFurnaceEntity extends BlockEntity implements PropertyDelegateHolder, ExtendedScreenHandlerFactory, ImplementedInventory  {
+    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(9, ItemStack.EMPTY);
     private float fuel;
     private float progress;
-    protected final PropertyDelegate propertyDelegate = new PropertyDelegate(){
+    protected PropertyDelegate propertyDelegate = new PropertyDelegate(){
 
         @Override
         public int get(int index) {
@@ -64,6 +70,7 @@ public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity imple
             return 2;
         }
     };
+
     public BaseMeltingFurnaceEntity(BlockPos pos, BlockState state) {
         super(BASE_MELTING_FURNACE_ENTITY, pos, state);
     }
@@ -71,27 +78,8 @@ public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity imple
         super(BASE_MELTING_FURNACE_ENTITY, pos, state);
         this.world = world;
     }
-    @Override
-    public Text getDisplayName() {
-        // Using the block name as the screen title
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
-    }
 
-    @Override
-    protected Text getContainerName() {
 
-        return null;
-    }
-
-    @Override
-    protected DefaultedList<ItemStack> getInvStackList() {
-        return null;
-    }
-
-    @Override
-    protected void setInvStackList(DefaultedList<ItemStack> list) {
-
-    }
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
@@ -100,35 +88,36 @@ public class BaseMeltingFurnaceEntity extends LootableContainerBlockEntity imple
     }
 
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return null;
+    public DefaultedList<ItemStack> getItems() {
+        return inv;
+
+    }
+    @Override
+    public Text getDisplayName() {
+        // versions 1.18 and below
+        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+ 
+        // versions 1.19 and later
     }
     // @Override
     // public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
     //     return inv;
     //     // return super.getInventory(state, world, pos);
     // }
-    @Override
-    public int size() {
-        return 0;
-    }
     public static void tick(World world, BlockPos pos, BlockState state, BaseMeltingFurnaceEntity be) {
-        be.fuel--;
+        be.propertyDelegate.set(0,be.propertyDelegate.get(0)-1);
+
         // System.out.print(pos);
-    }
-    @Override
-    public SidedInventory getInventory(BlockState state, WorldAccess world, BlockPos pos) {
-        return (SidedInventory) inv;
-    }
-    public void setFuelTime(int i) {
-        fuel = i;
-    }
-    public float getFuelTime(){
-        return fuel;
     }
     @Override
     public PropertyDelegate getPropertyDelegate() {
         
         return propertyDelegate;
+    }
+    @Override
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+        buf.writeBlockPos(pos);
+
+        
     }
 }
